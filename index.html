@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Project01</title>
+        <title>Space Weather</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://kit.fontawesome.com/e3897fd785.js" crossorigin="anonymous"></script>
@@ -17,18 +17,36 @@
 
     <body>
 
-
-        <h1>Martian Weather</h1>
-
-        <p>Pretend you're living in space. What's the weather today?</p>
         <div class="jumbotron">
-            <h1 class="display-4">Hello, world!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <h1 class="display-4">Space Weather Dashboard</h1>
+            <p class="lead">Pretend you're living in space. What's the weather today?</p>
             <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+
+            <form class="form">
+                <h4>Search for a City: </h4>
+                <input class="form-control mr-sm-2" type="text" placeholder="Enter City Name" aria-label="Search" id="cityName">
+                <br/>
+                <button class="btn btn-primary" type="submit" id="search"><i class="fas fa-search"></i> Search</button>
+            </form>
           </div>
 
+          
+
+          <div class="container" id="localWeather">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                            <div class="card-body">
+                              <h5 class="card-title">Info card title</h5>
+                              <p class="card-text" id="mars"></p>
+                            </div>
+                          </div>
+
+                    </div>
+                </div>
+          </div>
+
+          </div>
 
 <!-- 
 pseudo code 
@@ -75,8 +93,9 @@ THEN I should see the weather of that city compared to the weather on Mars.
 
 
 
-        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>        
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="script.js"></script>
     </body>
