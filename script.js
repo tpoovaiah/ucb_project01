@@ -4,6 +4,7 @@
 
 var date = new Date();
 
+
 function runMars(){
     $.ajax({
         url: "https://api.nasa.gov/insight_weather/?api_key=0Fdg2t02UzcsbtZFaOGFAXNB1DINEIsAwaIMe68h&feedtype=json&ver=1.0",
@@ -11,25 +12,27 @@ function runMars(){
     })
 
     .then(function(responseMars){
-        console.log(responseMars[0]);
-        console.log(responseMars["519"].AT.av);
+        console.log("response mars 0", responseMars.sol_keys[0]);
+        console.log("response mars 519", responseMars[responseMars.sol_keys[0]].AT.av);
         $("#marFforcasth3").empty();
         var forrecasth3 = $("<h3>").text("mars forecast Weather")
         $("#marFforcasth3").append(forrecasth3)
       
         $(".planetName").text("planets name:  mars")
-        $(".marsMaxTemp").text("Max temprature: " + responseMars["519"].AT.mx)
-        $(".marsMinTemp").text("Min temprature: " + responseMars["519"].AT.mn)
-        $(".marsAvgTemp").text("Avg temprature: " + responseMars["519"].AT.av)
+        $(".marsMaxTemp").text("Max temprature: " + responseMars[responseMars.sol_keys[0]].AT.mx)
+        $(".marsMinTemp").text("Min temprature: " + responseMars[responseMars.sol_keys[0]].AT.mn)
+        $(".marsAvgTemp").text("Avg temprature: " + responseMars[responseMars.sol_keys[0]].AT.av)
         $("#marsForeCast").empty();
+
         
-        for(var j = 519; j < 524; j++){
+        
+        for (var j = 0; j < 5; j++){
             
             var cards = $("<div>").addClass("card col-md-2 ml-4 bg-success text-white");
             var cardBody = $("<div>").addClass("card-body p-3 forecastBody")
-            var sol = $("<h4>").text("sol:" + j)
-            var maxtemp = $("<p>").text("Max temprature: " + responseMars[j].AT.mx);
-            var mintemp = $("<p>").text("Max temprature: " + responseMars[j].AT.mn);
+            var sol = $("<h4>").text("sol:" + responseMars.sol_keys[j])
+            var maxtemp = $("<p>").text("Max temprature: " + responseMars[responseMars.sol_keys[j]].AT.mx);
+            var mintemp = $("<p>").text("Max temprature: " + responseMars[responseMars.sol_keys[j]].AT.mn);
            
     
             
@@ -115,6 +118,27 @@ function getCurrentForecast(){
       })
 }
 
+function displayMars(){
+    var earthDate = moment().format().split("", 10).join("");
+    var queryURL= "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=0Fdg2t02UzcsbtZFaOGFAXNB1DINEIsAwaIMe68h&earth_date=" + earthDate
+
+    //console.log("earthDate", earthDate)
+    
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+
+    .then (function(response){
+        //console.log("Mars Picture",response)
+        
+        $("body").css("background-image", "url(" + response.photos["0"].img_src + ")");
+        $("body").css("background-repeat", "no-repeat")
+        $("body").css("background-size", "cover")
+    })
+
+}
+
 
 
 
@@ -126,4 +150,5 @@ $("#search").on("click", function(){
     runLocalWeather() ;
     getCurrentForecast();
      runMars();
+     displayMars();
 })

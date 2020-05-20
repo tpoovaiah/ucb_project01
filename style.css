@@ -2,13 +2,17 @@
     text-align: center;
     
 }
-body{
+/* body{
     background-image:url("space2.jpg")
-}
+} */
 .mars{
     padding: 2rem;
    
 }
 h3{
     color: white;
+}
+
+.bgPicture {
+    position: absolute;
 }
