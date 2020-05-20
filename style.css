@@ -2,3 +2,13 @@
     text-align: center;
     
 }
+body{
+    background-image:url("space2.jpg")
+}
+.mars{
+    padding: 2rem;
+   
+}
+h3{
+    color: white;
+}
