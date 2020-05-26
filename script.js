@@ -19,9 +19,9 @@ function runMars(){
         $("#marFforcasth3").append(forrecasth3)
       
         $(".planetName").text("planets name:  mars")
-        $(".marsMaxTemp").text("Max temprature: " + responseMars[responseMars.sol_keys[0]].AT.mx)
-        $(".marsMinTemp").text("Min temprature: " + responseMars[responseMars.sol_keys[0]].AT.mn)
-        $(".marsAvgTemp").text("Avg temprature: " + responseMars[responseMars.sol_keys[0]].AT.av)
+        $(".marsMaxTemp").text("Max temprature: " + responseMars[responseMars.sol_keys[0]].AT.mx + " °F")
+        $(".marsMinTemp").text("Min temprature: " + responseMars[responseMars.sol_keys[0]].AT.mn + " °F")
+        $(".marsAvgTemp").text("Avg temprature: " + responseMars[responseMars.sol_keys[0]].AT.av + " °F")
         $("#marsForeCast").empty();
 
         
@@ -31,8 +31,8 @@ function runMars(){
             var cards = $("<div>").addClass("card col-md-2 ml-4 bg-success text-white");
             var cardBody = $("<div>").addClass("card-body p-3 forecastBody")
             var sol = $("<h4>").text("sol:" + responseMars.sol_keys[j])
-            var maxtemp = $("<p>").text("Max temprature: " + responseMars[responseMars.sol_keys[j]].AT.mx);
-            var mintemp = $("<p>").text("Max temprature: " + responseMars[responseMars.sol_keys[j]].AT.mn);
+            var maxtemp = $("<p>").text("Max temprature: " + responseMars[responseMars.sol_keys[j]].AT.mx + " °F");
+            var mintemp = $("<p>").text("Min temprature: " + responseMars[responseMars.sol_keys[j]].AT.mn + " °F");
            
     
             
@@ -58,9 +58,11 @@ function runLocalWeather() {
     .then(function(responseLocal){
         console.log(responseLocal);
         console.log(responseLocal.city.name);
+        var temp = (responseLocal.list[0].main.temp - 273.15) * 1.80 + 32;
+        var tempF = Math.floor(temp);
         $(".currentDate").text("current date: "+date.toLocaleDateString('en-US'));
         $(".card-title").text("City name: "+responseLocal.city.name)
-        $(".card-text").text("temprature: "+responseLocal.list[0].main.temp)
+        $(".card-text").text("temprature: "+tempF + " °F")
         $(".cardHumidity").text("humidity: "+responseLocal.list[0].main.humidity)
 
           
@@ -130,7 +132,7 @@ function displayMars(){
     })
 
     .then (function(response){
-        //console.log("Mars Picture",response)
+        console.log("Mars Picture",response)
         
         $("body").css("background-image", "url(" + response.photos["0"].img_src + ")");
         $("body").css("background-repeat", "no-repeat")
@@ -151,4 +153,35 @@ $("#search").on("click", function(){
     getCurrentForecast();
      runMars();
      displayMars();
+     hide();
 })
+
+
+
+
+
+function displayMars(){
+    var earthDate = moment().format().split("", 10).join("");
+    var queryURL= "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=0Fdg2t02UzcsbtZFaOGFAXNB1DINEIsAwaIMe68h&earth_date=" + earthDate
+
+    console.log("earthDate", earthDate)
+    
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+
+    .then (function(response){
+        console.log("Mars Picture",response)
+        
+        $("body").css("background-image", "url(" + response.photos["0"].img_src + ")");
+        $("body").css("background-repeat", "no-repeat")
+        $("body").css("background-size", "cover")
+    })
+
+}
+
+
+function hide(){
+   $(".hide").removeClass("hide")
+}
