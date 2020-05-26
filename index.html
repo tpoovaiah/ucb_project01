@@ -18,13 +18,13 @@
 <body id="body">
 
     <div class="jumbotron">
-        <h1 class="display-4">Space Weather Dashboard</h1>
+        <h1 class="display-4 ">Space Weather Dashboard</h1>
         <p class="lead">Pretend you're living in space. What's the weather today?</p>
         <hr class="my-4">
 
         <form class="form">
             <h4>Search for a City: </h4>
-            <input class="form-control mr-sm-2" type="text" placeholder="Enter City Name" aria-label="Search"
+            <input class="form-control " type="text" placeholder="Enter City Name" aria-label="Search"
                 id="cityName">
             <br />
             <button class="btn btn-primary" type="submit" id="search"><i class="fas fa-search"></i> Search</button>
@@ -36,10 +36,10 @@
     <div class="container" id="localWeather">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                <div class="card hide text-white bg-info mb-3" style="max-width: 18rem;">
                     <div id="currentCity" class="card-body">
                         <h5 class="currentDate" id="mars"></h5>
-                        <h5 class="card-title">Earth's weather</h5>
+                        <h5 class="card-title ">Earth's weather</h5>
                         <h5 class="card-text" id="mars"></h5>
                         <h5 class="cardHumidity" id="mars"></h5>
 
@@ -51,12 +51,12 @@
 
         </div>
         <div class="col-lg-12">
-            <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card topMargin hide text-white bg-success mb-3" style="max-width: 18rem;">
                 <div class="card-body ">
 
                     <h5 class="planetName"></h5>
                     <h5 class="currentDate"></h5>
-                    <h5 class="marsMinTemp">Mars weather</h5>
+                    <h5 class="marsMinTemp ">Mars weather</h5>
                     <h5 class="marsMaxTemp"></h5>
                     <h5 class="marsAvgTemp"></h5>
                 </div>
