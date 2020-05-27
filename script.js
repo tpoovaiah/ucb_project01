@@ -15,13 +15,13 @@ function runMars(){
         console.log("response mars 0", responseMars.sol_keys[0]);
         console.log("response mars 519", responseMars[responseMars.sol_keys[0]].AT.av);
         $("#marFforcasth3").empty();
-        var forrecasth3 = $("<h3>").text("mars forecast Weather")
+        var forrecasth3 = $("<h3>").text("Mars Weather Forecast")
         $("#marFforcasth3").append(forrecasth3)
       
-        $(".planetName").text("planets name:  mars")
-        $(".marsMaxTemp").text("Max temprature: " + responseMars[responseMars.sol_keys[0]].AT.mx + " °F")
-        $(".marsMinTemp").text("Min temprature: " + responseMars[responseMars.sol_keys[0]].AT.mn + " °F")
-        $(".marsAvgTemp").text("Avg temprature: " + responseMars[responseMars.sol_keys[0]].AT.av + " °F")
+        $(".planetName").text("Planet: Mars")
+        $(".marsMaxTemp").text("Max temp: " + responseMars[responseMars.sol_keys[0]].AT.mx + " °F")
+        $(".marsMinTemp").text("Min temp: " + responseMars[responseMars.sol_keys[0]].AT.mn + " °F")
+        $(".marsAvgTemp").text("Avg temp: " + responseMars[responseMars.sol_keys[0]].AT.av + " °F")
         $("#marsForeCast").empty();
 
         
@@ -30,9 +30,9 @@ function runMars(){
             
             var cards = $("<div>").addClass("card col-md-2 ml-4 bg-success text-white");
             var cardBody = $("<div>").addClass("card-body p-3 forecastBody")
-            var sol = $("<h4>").text("sol:" + responseMars.sol_keys[j])
-            var maxtemp = $("<p>").text("Max temprature: " + responseMars[responseMars.sol_keys[j]].AT.mx + " °F");
-            var mintemp = $("<p>").text("Min temprature: " + responseMars[responseMars.sol_keys[j]].AT.mn + " °F");
+            var sol = $("<h4>").text("Sol:" + responseMars.sol_keys[j])
+            var maxtemp = $("<p>").text("Max temp: " + responseMars[responseMars.sol_keys[j]].AT.mx + " °F");
+            var mintemp = $("<p>").text("Min temp: " + responseMars[responseMars.sol_keys[j]].AT.mn + " °F");
            
     
             
@@ -60,10 +60,10 @@ function runLocalWeather() {
         console.log(responseLocal.city.name);
         var temp = (responseLocal.list[0].main.temp - 273.15) * 1.80 + 32;
         var tempF = Math.floor(temp);
-        $(".currentDate").text("current date: "+date.toLocaleDateString('en-US'));
-        $(".card-title").text("City name: "+responseLocal.city.name)
-        $(".card-text").text("temprature: "+tempF + " °F")
-        $(".cardHumidity").text("humidity: "+responseLocal.list[0].main.humidity)
+        $(".currentDate").text("Current Date: "+date.toLocaleDateString('en-US'));
+        $(".card-title").text("City: "+responseLocal.city.name)
+        $(".card-text").text("Temp: "+tempF + " °F")
+        $(".cardHumidity").text("Humidity: "+responseLocal.list[0].main.humidity)
 
           
         
@@ -83,7 +83,7 @@ function getCurrentForecast(){
          
     $('#forecast').empty();
     $("#forcasth3").empty();
-    var forecast = $("<h3>").addClass("forecasth3").text("Earth forecast Weather")
+    var forecast = $("<h3>").addClass("forecasth3").text("Earth Weather Forecast")
     $("#forcasth3").append(forecast)
         
        
@@ -101,7 +101,7 @@ function getCurrentForecast(){
           var card = $("<div>").addClass("card col-md-2 ml-4 bg-info text-white");
           var cardBody = $("<div>").addClass("card-body p-3 forecastBody")
           var cityDate = $("<h4>").addClass("card-title").text(day);
-          var temperature = $("<p>").text("Temperature: " + tempF + " °F");
+          var temperature = $("<p>").text("Temp: " + tempF + " °F");
           var humidity = $("<p>").text("Humidity: " + results[i].main.humidity + "%");
   
           var image = $("<img>").attr("src", "https://openweathermap.org/img/w/" + results[i].weather[0].icon + ".png")
