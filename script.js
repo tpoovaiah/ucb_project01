@@ -49,7 +49,7 @@ function runMars(){
 function runLocalWeather() {
 
     var userInput = $("#cityName").val().trim();
-    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?appID=18e8d96494d93797eebb6e49b5194ab5&q=" + userInput;
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?appID=18e8d96494d93797eebb6e49b5194ab5&q=" + userInput;
 
     $.ajax({
         url: queryURL,
